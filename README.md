@@ -6,15 +6,19 @@ This project implements a `BigInt` class in C++ to handle very large integers us
 ## Project Structure
 
 BigIntegerProject/
-include/
-BigInt.h
-src/
-BigInt.cpp
-main.cpp
-tests/
-test_bigint.cpp
-Makefile
-README.md
+│
+├── include/
+│ └── BigInt.h
+│
+├── src/
+│ ├── BigInt.cpp
+│ └── main.cpp
+│
+├── tests/
+│ └── test_bigint.cpp
+│
+├── Makefile
+└── README.md
 
 ## Features
 - Addition of two big integers
