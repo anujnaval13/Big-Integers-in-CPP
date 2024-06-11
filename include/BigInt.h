@@ -43,6 +43,22 @@ public:
     bool isLesserOrEqual(const BigInt& other) const;
     bool isGreaterOrEqual(const BigInt& other) const;
 
+    // Compound assignment operators
+    BigInt& operator+=(const BigInt& other);
+    BigInt& operator-=(const BigInt& other);
+    BigInt& operator*=(const BigInt& other);
+    BigInt& operator/=(const BigInt& other);
+    BigInt& operator%=(const BigInt& other);
+
+    // Increment and Decrement operators
+    BigInt& operator++();        // Prefix increment
+    BigInt operator++(int);      // Postfix increment
+    BigInt& operator--();        // Prefix decrement
+    BigInt operator--(int);      // Postfix decrement
+
+    // Stream operators
+    friend std::ostream& operator<<(std::ostream& out, const BigInt& value);
+    friend std::istream& operator>>(std::istream& in, BigInt& value);
 
     // Utilities
     int numDigits() const;

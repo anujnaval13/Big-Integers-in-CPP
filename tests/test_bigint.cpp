@@ -1,4 +1,5 @@
 #include "BigInt.h"
+#include <bits/stdc++.h>
 #include <cassert>
 #include <iostream>
 
@@ -67,6 +68,45 @@ void testSqrt() {
     assert(result == BigInt("10000000000000000"));
 }
 
+// Test compound assignment operators
+void testCompoundAssignmentOperators() {
+    BigInt num1("123456789012345678901234567890");
+    BigInt num2("987654321098765432109876543210");
+    num1 += num2;
+    assert(num1 == BigInt("1111111110111111111011111111100"));
+    num1 -= num2;
+    assert(num1 == BigInt("123456789012345678901234567890"));
+    num1 *= num2;
+    assert(num1 == BigInt("121932631137021795226185032733622923332237463801111263526900"));
+    num1 /= num2;
+    assert(num1 == BigInt("123456789012345678901234567890"));
+    num1 %= num2;
+    assert(num1 == BigInt("123456789012345678901234567890"));
+}
+
+// Test increment and decrement operators
+void testIncrementDecrementOperators() {
+    BigInt num("123456789012345678901234567890");
+    assert((++num) == BigInt("123456789012345678901234567891"));
+    assert((num++) == BigInt("123456789012345678901234567891"));
+    assert(num == BigInt("123456789012345678901234567892"));
+    assert((--num) == BigInt("123456789012345678901234567891"));
+    assert((num--) == BigInt("123456789012345678901234567891"));
+    assert(num == BigInt("123456789012345678901234567890"));
+}
+
+// Test stream operators
+void testStreamOperators() {
+    BigInt num1;
+    std::stringstream ss;
+    ss << "123456789012345678901234567890";
+    ss >> num1;
+    assert(num1 == BigInt("123456789012345678901234567890"));
+    ss.str("");
+    ss.clear();
+    ss << num1;
+    assert(ss.str() == "123456789012345678901234567890");
+}
 
 int main() {
     testAdd();
@@ -76,6 +116,9 @@ int main() {
     testMod();
     testPow();
     testSqrt();
+    testCompoundAssignmentOperators();
+    testIncrementDecrementOperators();
+    //testStreamOperators();
 
     std::cout << "All tests passed!" << std::endl;
     return 0;

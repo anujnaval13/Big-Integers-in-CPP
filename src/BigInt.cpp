@@ -4,6 +4,8 @@
 #include <cmath>
 #include <string>
 #include <vector>
+#include <sstream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -84,6 +86,66 @@ bool BigInt::operator>(const BigInt& other) const {
 
 bool BigInt::operator>=(const BigInt& other) const {
     return !this->isLesserThan(other);
+}
+
+BigInt& BigInt::operator+=(const BigInt& other) {
+    *this = this->add(other);
+    return *this;
+}
+
+BigInt& BigInt::operator-=(const BigInt& other) {
+    *this = this->subtract(other);
+    return *this;
+}
+
+BigInt& BigInt::operator*=(const BigInt& other) {
+    *this = this->multiply(other);
+    return *this;
+}
+
+BigInt& BigInt::operator/=(const BigInt& other) {
+    *this = this->divide(other);
+    return *this;
+}
+
+BigInt& BigInt::operator%=(const BigInt& other) {
+    *this = this->mod(other);
+    return *this;
+}
+
+BigInt& BigInt::operator++() {
+    *this = this->add(BigInt("1"));
+    return *this;
+}
+
+BigInt BigInt::operator++(int) {
+    BigInt temp = *this;
+    ++(*this);
+    return temp;
+}
+
+BigInt& BigInt::operator--() {
+    *this = this->subtract(BigInt("1"));
+    return *this;
+}
+
+BigInt BigInt::operator--(int) {
+    BigInt temp = *this;
+    --(*this);
+    return temp;
+}
+
+std::ostream& operator<<(std::ostream& out, const BigInt& value) {
+    if (value.isNegative) out << '-';
+    out << std::string(value.number.begin(), value.number.end());
+    return out;
+}
+
+std::istream& operator>>(std::istream& in, BigInt& value) {
+    std::string input;
+    in >> input;
+    value = BigInt(input);
+    return in;
 }
 
 // Basic Operations
@@ -310,6 +372,9 @@ std::string BigInt::multiplyStrings(const std::string& num1, const std::string& 
 
 std::pair<std::string, std::string> BigInt::divideStrings(const std::string& num1, const std::string& num2) {
     // Implement division of two strings
+    if (num2 == "0") {
+        throw std::invalid_argument("Division by zero");
+    }
     std::string quotient = "0";
     std::string remainder = num1;
 
