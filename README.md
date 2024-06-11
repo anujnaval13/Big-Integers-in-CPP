@@ -28,4 +28,26 @@ BigIntegerProject/
 - Modulo operation between two big integers
 - Exponentiation of a big integer
 - Square root of a big integer (To be implemented)
-- Comparison operations (greater
+- Comparison operations (greater, lesser, equal)
+- Utility functions (number of digits, print, conversion from int)
+
+## How to Build
+1. To build the main executable:
+    ```sh
+    make
+    ```
+
+2. To build the test executable:
+    ```sh
+    make test_bigint
+    ```
+
+3. To clean the build:
+    ```sh
+    make clean
+    ```
+
+## Running the Program
+After building, you can run the main program with:
+```sh
+./bigint
