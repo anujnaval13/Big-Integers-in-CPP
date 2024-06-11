@@ -31,12 +31,14 @@ public:
 
 private:
     std::string number;
+    bool isNegative;
 
     // Helper functions
     static std::string addStrings(const std::string& num1, const std::string& num2);
     static std::string subtractStrings(const std::string& num1, const std::string& num2);
     static std::string multiplyStrings(const std::string& num1, const std::string& num2);
     static std::pair<std::string, std::string> divideStrings(const std::string& num1, const std::string& num2);
+    static int compareAbsolute(const std::string& num1, const std::string& num2);
 };
 
 #endif // BIGINT_H
