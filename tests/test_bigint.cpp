@@ -15,40 +15,40 @@ using namespace std;
 void testAdd() {
     BigInt num1("123456789012345678901234567890");
     BigInt num2("987654321098765432109876543210");
-    BigInt result = num1.add(num2);
-    assert(result.isEqual(BigInt("1111111110111111111011111111100")));
+    BigInt result = num1+num2;
+    assert(result == BigInt("1111111110111111111011111111100"));
 }
 
 // Test subtraction with large numbers
 void testSubtract() {
     BigInt num1("987654321098765432109876543210");
     BigInt num2("123456789012345678901234567890");
-    BigInt result = num1.subtract(num2);
-    assert(result.isEqual(BigInt("864197532086419753208641975320")));
+    BigInt result = num1 - num2;
+    assert(result == BigInt("864197532086419753208641975320"));
 }
 
 // Test multiplication with large numbers
 void testMultiply() {
     BigInt num1("123456789012345678901234567890");
     BigInt num2("987654321098765432109876543210");
-    BigInt result = num1.multiply(num2);
-    assert(result.isEqual(BigInt("121932631137021795226185032733622923332237463801111263526900")));
+    BigInt result = num1 * num2;
+    assert(result == BigInt("121932631137021795226185032733622923332237463801111263526900"));
 }
 
 // Test division with large numbers
 void testDivide() {
     BigInt num1("987654321098765432109876543210");
     BigInt num2("123456789012345678901234567890");
-    BigInt result = num1.divide(num2);
-    assert(result.isEqual(BigInt("8")));
+    BigInt result = num1 / num2;
+    assert(result == BigInt("8"));
 }
 
 // Test modulo with large numbers
 void testMod() {
     BigInt num1("987654321098765432109876543210");
     BigInt num2("123456789012345678901234567890");
-    BigInt result = num1.mod(num2);
-    assert(result.isEqual(BigInt("9000000000900000000090")));
+    BigInt result = num1 % num2;
+    assert(result == BigInt("9000000000900000000090"));
 }
 
 // Test power with large numbers
@@ -64,8 +64,7 @@ void testPow() {
 void testSqrt() {
     BigInt num("100000000000000000000000000000000");
     BigInt result = num.sqrt();
-    assert(result.isEqual(BigInt("10000000000000000")));
-
+    assert(result == BigInt("10000000000000000"));
 }
 
 

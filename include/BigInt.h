@@ -10,6 +10,21 @@ public:
     BigInt(const std::string& number);
     BigInt(int number);
 
+    // Operator overloads
+    BigInt operator+(const BigInt& other) const;
+    BigInt operator-(const BigInt& other) const;
+    BigInt operator*(const BigInt& other) const;
+    BigInt operator/(const BigInt& other) const;
+    BigInt operator%(const BigInt& other) const;
+
+    // Comparison operator overloads
+    bool operator==(const BigInt& other) const;
+    bool operator!=(const BigInt& other) const;
+    bool operator<(const BigInt& other) const;
+    bool operator<=(const BigInt& other) const;
+    bool operator>(const BigInt& other) const;
+    bool operator>=(const BigInt& other) const;
+
     // Basic Operations
     BigInt add(const BigInt& other) const;
     BigInt subtract(const BigInt& other) const;
@@ -23,6 +38,11 @@ public:
     bool isGreater(const BigInt& other) const;
     bool isLesser(const BigInt& other) const;
     bool isEqual(const BigInt& other) const;
+    bool isGreaterThan(const BigInt& other) const;
+    bool isLesserThan(const BigInt& other) const;
+    bool isLesserOrEqual(const BigInt& other) const;
+    bool isGreaterOrEqual(const BigInt& other) const;
+
 
     // Utilities
     int numDigits() const;

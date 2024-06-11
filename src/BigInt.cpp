@@ -42,6 +42,50 @@ BigInt::BigInt(int number) {
     }
 }
 
+BigInt BigInt::operator+(const BigInt& other) const {
+    return this->add(other);
+}
+
+BigInt BigInt::operator-(const BigInt& other) const {
+    return this->subtract(other);
+}
+
+BigInt BigInt::operator*(const BigInt& other) const {
+    return this->multiply(other);
+}
+
+BigInt BigInt::operator/(const BigInt& other) const {
+    return this->divide(other);
+}
+
+BigInt BigInt::operator%(const BigInt& other) const {
+    return this->mod(other);
+}
+
+bool BigInt::operator==(const BigInt& other) const {
+    return this->isEqual(other);
+}
+
+bool BigInt::operator!=(const BigInt& other) const {
+    return !this->isEqual(other);
+}
+
+bool BigInt::operator<(const BigInt& other) const {
+    return this->isLesserThan(other);
+}
+
+bool BigInt::operator<=(const BigInt& other) const {
+    return this->isLesserOrEqual(other);
+}
+
+bool BigInt::operator>(const BigInt& other) const {
+    return this->isGreaterThan(other);
+}
+
+bool BigInt::operator>=(const BigInt& other) const {
+    return !this->isLesserThan(other);
+}
+
 // Basic Operations
 BigInt BigInt::add(const BigInt& other) const {
     if (isNegative == other.isNegative) {
@@ -146,6 +190,30 @@ bool BigInt::isLesser(const BigInt& other) const {
 
 bool BigInt::isEqual(const BigInt& other) const {
     return number == other.number && isNegative == other.isNegative;
+}
+
+bool BigInt::isGreaterThan(const BigInt& other) const {
+    if (isNegative && !other.isNegative) return false;
+    if (!isNegative && other.isNegative) return true;
+    if (number.size() > other.number.size()) return !isNegative;
+    if (number.size() < other.number.size()) return isNegative;
+    return number > other.number;
+}
+
+bool BigInt::isLesserThan(const BigInt& other) const {
+    if (isNegative && !other.isNegative) return true;
+    if (!isNegative && other.isNegative) return false;
+    if (number.size() < other.number.size()) return !isNegative;
+    if (number.size() > other.number.size()) return isNegative;
+    return number < other.number;
+}
+
+bool BigInt::isLesserOrEqual(const BigInt& other) const {
+    return isLesserThan(other) || isEqual(other);
+}
+
+bool BigInt::isGreaterOrEqual(const BigInt& other) const {
+    return isGreaterThan(other) || isEqual(other);
 }
 
 // Utilities
